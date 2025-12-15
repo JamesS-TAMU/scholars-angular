@@ -305,7 +305,7 @@ export class DataAndAnalyticsComponent implements OnInit {
                 if (!a?.name || !b?.name) {
                   throw new Error('Individual.name is missing');
                 }
-                return a.name.localeCompare(b.name);
+                return (a?.name ?? '').localeCompare(b?.name ?? '');
               }
               )
           )
