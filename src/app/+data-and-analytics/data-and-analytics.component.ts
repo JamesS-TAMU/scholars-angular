@@ -297,7 +297,12 @@ export class DataAndAnalyticsComponent implements OnInit {
     }
 
     return this.individualRepo.search({ filters, page })
-      .pipe(map(collection => (collection._embedded.individual as Individual[]).sort((a, b) => a.name.localeCompare(b.name))));
+      .pipe(map(collection => (collection._embedded.individual as Individual[])
+        .sort((a, b) => {
+          if (!a?.name || !b?.name) {
+            throw new Error('Individual.name is missing');
+          }
+          (a?.name ?? '').localeCompare(b?.name ?? ''))));
   }
 
 }
