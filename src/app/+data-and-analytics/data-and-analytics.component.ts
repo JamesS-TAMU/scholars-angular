@@ -303,11 +303,11 @@ export class DataAndAnalyticsComponent implements OnInit {
             .sort(
               (a, b) => {
                 if (!a?.name || !b?.name) {
-                  throw new Error('Individual.name is missing');
+                  console.error('Individual.name is missing', { a, b });
                 }
                 return (a?.name ?? '').localeCompare(b?.name ?? '');
               }
-              )
+            )
           )
         );
   }
