@@ -230,7 +230,7 @@ export class DataAndAnalyticsComponent implements OnInit {
     );
   }
 
-  public formatter = (organization: Individual) => organization.name;
+  public formatter = (organization: Individual | null) => organization?.name || 'No name availlable';
 
   public onSelectOrganization(event: any, params: Params): void {
     let id = event;
