@@ -225,7 +225,7 @@ export class DataAndAnalyticsComponent implements OnInit {
     return text.pipe(
       distinctUntilChanged(),
       map((term) => this.organizationsSubject.value
-        .filter(org => org.name.toLowerCase().includes(term.toLowerCase()))
+        .filter(org => (org.name ?? '').toLowerCase().includes((term ?? '').toLowerCase()))
       )
     );
   }
